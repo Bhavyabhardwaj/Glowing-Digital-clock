@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock with glowing effect | Bhavya-Bhardwaj</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Digital Clock Display -->
+        <div class="display">
+            <div id="time"></div>
+        </div>
+        <!-- Glowing dots for decoration -->
+        <span></span>
+        <span></span>
+    </div>
+
+    <script>
+        // Update the time every second
+        setInterval(() => {
+            // Select the HTML element to display the time
+            const time = document.querySelector("#time");
+            
+            // Get the current date and time
+            let date = new Date();
+            let hours = date.getHours();
+            let minutes = date.getMinutes();
+            let seconds = date.getSeconds();
+            let day_night = "AM";
+
+            // Convert 24-hour time to 12-hour time
+            if (hours > 12) {
+                day_night = "PM";
+                hours -= 12;
+            }
+
+            // Add leading zeros to single-digit hours, minutes, and seconds
+            if (hours < 10) {
+                hours = "0" + hours;
+            }
+            if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+            if (seconds < 10) {
+                seconds = "0" + seconds;
+            }
+
+            // Update the displayed time with the formatted string
+            time.textContent = hours + ":" + minutes + ":" + seconds + " " + day_night;
+        }, 1000);  // Repeat every 1000 milliseconds (1 second)
+    </script>
+</body>
+</html>
